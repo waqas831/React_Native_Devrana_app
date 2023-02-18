@@ -2,7 +2,8 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
- * @format
+
+* @format
  */
 
 import React from 'react';
@@ -16,12 +17,14 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import {NavigationContainer} from '@react-navigation/native';
 import {
   Colors,
   DebugInstructions,
   Header,
 } from 'react-native/Libraries/NewAppScreen';
+import MainTabBar from './components/Tabs/MainTabBar';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,18 +34,21 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <Text>Welcome</Text>
-      </ScrollView>
-    </SafeAreaView>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={backgroundStyle}>
+            <MainTabBar />
+          </ScrollView>
+        </SafeAreaView>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
