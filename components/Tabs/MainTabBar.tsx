@@ -5,7 +5,8 @@ import ProfileScreen from './ProfileScreen';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import LoginForm from '../../pages/login/LoginForm';
 import UserSignupForm from '../../pages/signup/UserSignupForm';
-import ForgotPasswordForm from '../../pages/forget/ForgotPasswordForm'
+import ForgotPasswordForm from '../../pages/forget/ForgotPasswordForm';
+import UserFormData from '../../pages/user/form/UserFormData';
 const Tab = createBottomTabNavigator();
 
 const MainTabBar = () => {
@@ -48,7 +49,8 @@ const MainTabBar = () => {
         {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
         <Tab.Screen name="login" component={LoginForm} />
         <Tab.Screen name="signup" component={UserSignupForm} />
-        <Tab.Screen name="forget" component={ForgotPasswordForm} />
+        <Tab.Screen name="forget" component={UserFormData} />
+        {/* <Tab.Screen name="user" component={UserFormData} /> */}
       </Tab.Navigator>
     </View>
   );

@@ -24,6 +24,7 @@ import {
   Header,
 } from 'react-native/Libraries/NewAppScreen';
 import MainTabBar from './components/Tabs/MainTabBar';
+import ScreenNavigations from './layout/ScreenNavigations';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App(): JSX.Element {
@@ -36,17 +37,19 @@ function App(): JSX.Element {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={backgroundStyle}>
-            <MainTabBar />
-          </ScrollView>
-        </SafeAreaView>
+        <ScreenNavigations>
+          <SafeAreaView style={backgroundStyle}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <ScrollView
+              contentInsetAdjustmentBehavior="automatic"
+              style={backgroundStyle}>
+              <MainTabBar />
+            </ScrollView>
+          </SafeAreaView>
+        </ScreenNavigations>
       </NavigationContainer>
     </GestureHandlerRootView>
   );

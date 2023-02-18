@@ -1,12 +1,20 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, TextInput, Button, Text} from 'react-native';
-
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 // interface LoginFormProps {
 //   onSubmit: (email: string, password: string) => void;
 //   onSwitchToSignup: () => void;
 // }
 
 const LoginForm = () => {
+  const navigation = useNavigation<any>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,7 +39,16 @@ const LoginForm = () => {
       />
       <Button title="Login" onPress={handleSubmit} />
       <Text style={styles.signupText}>
-        Don't have an account? <Text style={styles.signupLink}>Sign up</Text>
+        Don't have an account?{' '}
+        <Text style={styles.signupLink}>
+          <TouchableOpacity
+          
+            onPress={() => {
+              navigation.navigate('UserSignupForm');
+            }}>
+            <Text style={styles.signupLink}>Sign up</Text>
+          </TouchableOpacity>
+        </Text>
       </Text>
     </View>
   );
